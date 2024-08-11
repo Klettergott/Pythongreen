@@ -35,48 +35,64 @@ def Lottozahlen():
     lottozahlen.sort()
     return lottozahlen
 
-def r_Lottotipps(lottotipps,lottozahlen):
+def Vergleich(lines,lottotipps,lottozahlen,dreier,vierer,fuenfer,sechser):
     r_lottotipps = []
     for i in range(0,6):
         if lottotipps[i] in lottozahlen:
             r_lottotipps.append(lottotipps[i])
-#2 Funktionen erstellen 
-#Vergleich Funktion, in die die r_Lottotipps funktion kommt und die sagt, ob man einen dreier, vierer etc. erzielt hat
-#so kann man die Vergleiche in jede Lottoziehung über Funktionen implementieren, ohne sich jetzt zum Beispiel für Lottoziehungen und Lottoziehung
-#wiederholen zu müssen
+    if len(r_lottotipps) == 3:
+        dreier = dreier + 1
+        print(lines)
+        print(f"Du hast einen Dreier im Lotto! richtige Zahlen sind {r_lottotipps}, deine Zahlen sind {lottotipps}")
+        print(lines)
+        print()
+    elif len(r_lottotipps) == 4:
+        vierer = vierer + 1
+        print(lines)
+        print(f"Du hast einen Vierer im Lotto! richtige Zahlen sind {r_lottotipps}, deine Zahlen sind {lottotipps}")
+        print(lines)
+        print()
+    elif len(r_lottotipps) == 5:
+        fuenfer = fuenfer + 1
+        print(lines)
+        print(f"Du hast einen Fuenfer im Lotto! richtige Zahlen sind {r_lottotipps}, deine Zahlen sind {lottotipps}")
+        print(lines)
+        print()
+    elif len(r_lottotipps) == 6:
+        sechser = sechser + 1
+        print(lines)
+        print(f"Du hast einen Sechser im Lotto! richtige Zahlen sind {r_lottotipps}, deine Zahlen sind {lottotipps}")
+        print(lines)
+        print()
+    return dreier, vierer, fuenfer, sechser, r_lottotipps
 
 def Lottoziehungen(lottotipps):
-    dreier = 0
-    vierer = 0
-    fuenfer = 0
-    sechser = 0
     n = int(input("Wie oft soll ich Lottozahlen ziehen lassen und deine Lottotipps auf Dreier, Vierer, Fuenfer und Sechser ueberpruefen?: "))
     for z in range(n + 1):
-        r_lottotipps = []
         neue_lottozahlen = Lottozahlen()
-        lines = "-----------------------------------------------"
         print()
         print("Neue Lottozahlen: {}".format(neue_lottozahlen))
+        korrekt = Vergleich(lottotipps,neue_lottozahlen,dreier,vierer,fuenfer,sechser)
         for i in range(0,6):
             if lottotipps[i] in neue_lottozahlen:
             #b = b + 1
                 r_lottotipps.append(lottotipps[i])
-        if len(r_lottotipps) == 3:
+        if len(korrekt) == 3:
             dreier = dreier + 1
             print(lines)
-            print("Super! 3 richtige Zahlen bei Ziehung Nummer {}".format(z))
+            print("3 richtige Zahlen bei Ziehung Nummer {}".format(z))
             print(lottotipps)
             print(lines)
         elif len(r_lottotipps) == 4:
             vierer = vierer + 1
             print(lines)
-            print("Super! 4 richtige Zahlen bei Ziehung Nummer {}".format(z))
+            print("4 richtige Zahlen bei Ziehung Nummer {}".format(z))
             print(lottotipps)
             print(lines)
         elif len(r_lottotipps) == 5:
             fuenfer = fuenfer + 1
             print(lines)
-            print("Super! 5 richtige Zahlen bei Ziehung Nummer {}".format(z))
+            print("5 richtige Zahlen bei Ziehung Nummer {}".format(z))
             print(lottotipps)
             print(lines)
         elif len(r_lottotipps) == 6:
@@ -89,16 +105,23 @@ def Lottoziehungen(lottotipps):
     print("Deine Lottotipps: {}. Du hast: {} Dreier, {} Vierer, {} Fuenfer und {} Sechser erzielt!".format(lottotipps, dreier, vierer, fuenfer, sechser))
     return
 def Lottospiel():
+    dreier = 0
+    vierer = 0
+    fuenfer = 0
+    sechser = 0
+    lines = "-----------------------------------------------"
     lottotipps = Lottotipps()
     r_lottotipps = []
     lottozahlen = Lottozahlen()
     print("deine Lottotipps sind: {}, die Lottozahlen sind: {}".format(lottotipps,lottozahlen))
+    Vergleich(lines,lottotipps,lottozahlen,dreier,vierer,fuenfer,sechser)
     for i in range(0,6):
         if lottotipps[i] in lottozahlen:
             r_lottotipps.append(lottotipps[i])
     if len(r_lottotipps) > 0:
         print()
         print("Dies sind deine richtigen Lottotipps : {}".format(r_lottotipps))
+        Vergleich(lines,lottotipps,lottozahlen)
     elif len(r_lottotipps) == 0:
         print()
         print("Keiner deiner Lottotipps ist richtig")
