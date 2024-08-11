@@ -6,25 +6,20 @@ def Lottotipps():
     for i in range(6):
         doppelt = True
         while doppelt:
-            tipp = int(input("Gib deine Lottotipps ein im Zahlenbereich 1-49!: "))
-            print()
+            tipp = int(input("\nGib deine Lottotipps ein im Zahlenbereich 1-49!: "))
             while tipp == 0 or tipp > 49:
                 print("Zahl ist außerhalb des Tipp-Bereichs!")
-                tipp = int(input("Gib deine Lottotipps ein im Zahlenbereich 1-49!: "))
-                print()
+                tipp = int(input("\nGib deine Lottotipps ein im Zahlenbereich 1-49!: "))
             if lottotipps.count(tipp) == 0:
                 lottotipps.append(tipp)
                 doppelt = False
             else:
-                print("{} wurde doppelt eingegeben".format(tipp))
-                print()
+                print("\n{} wurde doppelt eingegeben".format(tipp))
     lottotipps.sort()
     return lottotipps
 def Lottozahlen():
     lottozahlen = []
-    print()
-    print()
-    print("Ziehung der Lottozahlen")
+    print("\n\nZiehung der Lottozahlen")
     for i in range(6):
         z = random.randint(1,49)
         lottozahlen.append(z)
@@ -50,13 +45,12 @@ def Lottoziehungen(lottotipps):
     vierer = 0
     fuenfer = 0
     sechser = 0
-    n = int(input("Wie oft soll ich Lottozahlen ziehen lassen und deine Lottotipps auf Dreier, Vierer, Fuenfer und Sechser ueberpruefen?: "))
+    n = int(input("\nWie oft soll ich Lottozahlen ziehen lassen und deine Lottotipps auf Dreier, Vierer, Fuenfer und Sechser ueberpruefen?: "))
     for z in range(n + 1):
         r_lottotipps = []
         neue_lottozahlen = Lottozahlen()
         lines = "-----------------------------------------------"
-        print()
-        print("Neue Lottozahlen: {}".format(neue_lottozahlen))
+        print("\nNeue Lottozahlen: {}".format(neue_lottozahlen))
         for i in range(0,6):
             if lottotipps[i] in neue_lottozahlen:
             #b = b + 1
@@ -85,31 +79,26 @@ def Lottoziehungen(lottotipps):
             print("Super! 6 richtige Zahlen bei Ziehung Nummer {}".format(z))
             print(lottotipps)
             print(lines)
-    print()
-    print("Deine Lottotipps: {}. Du hast: {} Dreier, {} Vierer, {} Fuenfer und {} Sechser erzielt!".format(lottotipps, dreier, vierer, fuenfer, sechser))
+    print("\n\nDeine Lottotipps: {}. Du hast: {} Dreier, {} Vierer, {} Fuenfer und {} Sechser erzielt!".format(lottotipps, dreier, vierer, fuenfer, sechser))
     return
 def Lottospiel():
     lottotipps = Lottotipps()
     r_lottotipps = []
     lottozahlen = Lottozahlen()
-    print("deine Lottotipps sind: {}, die Lottozahlen sind: {}".format(lottotipps,lottozahlen))
+    print("\ndeine Lottotipps sind: {}, die Lottozahlen sind: {}".format(lottotipps,lottozahlen))
     for i in range(0,6):
         if lottotipps[i] in lottozahlen:
             r_lottotipps.append(lottotipps[i])
     if len(r_lottotipps) > 0:
-        print()
-        print("Dies sind deine richtigen Lottotipps : {}".format(r_lottotipps))
+        print("\nDies sind deine richtigen Lottotipps : {}".format(r_lottotipps))
     elif len(r_lottotipps) == 0:
-        print()
-        print("Keiner deiner Lottotipps ist richtig")
-        print()
-    g = int(input("Willst du viele Lottozahlen ziehen lassen und deine Lottotipps auf Dreier, Vierer, Fuenfer, Sechser im Lotto pruefen lassen? Wenn ja gebe '1' ein, ansonsten eine andere Zahl: "))
+        print("\nKeiner deiner Lottotipps ist richtig")
+    g = int(input("\nWillst du viele Lottozahlen ziehen lassen und deine Lottotipps auf Dreier, Vierer, Fuenfer, Sechser im Lotto pruefen lassen? Wenn ja gebe '1' ein, ansonsten eine andere Zahl: "))
     if g == 1:
         Lottoziehungen(lottotipps)
-        print("Danke fuer's Spielen. Bis zum naechsten mal!")
-        print()
+        print("\nDanke fuer's Spielen. Bis zum naechsten mal!\n")
     else:
-        print("Na gut, danke für's Spielen!")
+        print("\nNa gut, danke für's Spielen!\n")
 Lottospiel()
 # als nächstes kannst du die Lottozahlen so oft wie du willst ziehen lassen und
 # auf dreier, vierer, fuenfer und sechsen pruefen lassen!
