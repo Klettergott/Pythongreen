@@ -2,14 +2,11 @@ Passwort = "Baum"
 for i in range(1,6):
     Passwort1 = input("Passwort bitte?: ")
     if Passwort == Passwort1:
-        print()
-        print("Herzlich Willkommen!")
+        print("\nHerzlich Willkommen!")
         break
     else:
-        print()
-        print("Falsches Passwort!")
-        print("{}.ter Fehlschlag!".format(i))
-        print()
+        print("\nFalsches Passwort!")
+        print("{}.ter Fehlschlag!\n".format(i))
+
 else:
-    print()
-    print("Keine Versuche mehr!")
+    print("\nKeine Versuche mehr!")

@@ -61,7 +61,7 @@ def play_blackjack():
                 computer_score = calculate_score(computer_cards)
 
                 print_hand(f"Player {i + 1}", player_cards[i], user_score)
-                print(f"Dealer's first card: {computer_cards[0],computer_cards[1]}\n")
+                print(f"Dealer's first card: {computer_cards[0][1]}\n")
 
                 if user_score == 0 or user_score > 21:
                     game_over[i] = True
